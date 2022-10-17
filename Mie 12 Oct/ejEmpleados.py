@@ -9,10 +9,45 @@ def menu():
     return int(input("Dime tu opcion: "))
 
 def leeDatosArchivo():
-    return [["Luis",99,3.14],["Sara",15,88.74],["Emilio",28,53.81]]
+    with open("empleados.txt","r") as miArchivo:
+        listaSucia = miArchivo.readlines()
+    print(listaSucia)
+    
+    for pos in range(len(listaSucia)):
+        listaSucia[pos] = listaSucia[pos].rstrip()
+    print(listaSucia)
+    
+    listaLimpia = []
+    for pos in range(len(listaSucia)):
+        listaLimpia.append(listaSucia[pos].split(","))
+    print(listaLimpia)
+    
+    for empleado in listaLimpia:
+        empleado[1] = int(empleado[1])
+        empleado[2] = float(empleado[2])
+    print(listaLimpia)
+    
+    return listaLimpia#[["Luis",99,3.14],["Sara",15,88.74],["Emilio",28,53.81]]
 
 def escribeDatosArchivo(listaDatos):
-    print("Escribiendo en archivo esto: ", listaDatos)
+    for empleado in listaDatos:
+        empleado[1] = str(empleado[1])
+        empleado[2] = str(empleado[2])
+    print(listaDatos)
+    
+    listaNueva = []
+    string = ""
+    for empleado in listaDatos:
+        for dato in empleado:
+            string += dato + ","
+        listaNueva.append(string[:-1])
+        string = ""
+    print(listaNueva)
+    
+    #for empleado in listaNueva:
+        
+    
+    print("Escribiendo en archivo esto: ", listaNueva)
 
 def reporteEmpleados(listaDatos):
     print("\n REPORTE DE EMPLEADOS \n")

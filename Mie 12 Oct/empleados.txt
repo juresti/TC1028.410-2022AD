@@ -1,0 +1,5 @@
+Mauricio,33,1200
+Emilio,44,1500.5
+Alicia,22,123.45
+Andrea,11,190.86
+Cesar,20,1458.92
